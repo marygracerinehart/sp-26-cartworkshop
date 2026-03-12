@@ -1,0 +1,76 @@
+.form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #1d3557;
+}
+.fieldGroup {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.fieldRow {
+  display: flex;
+  gap: 1rem;
+}
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+input, select {
+  padding: 0.5rem;
+  border: 1px solid #bfc8d2;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+input[aria-invalid="true"], select[aria-invalid="true"] {
+  border-color: #e63946;
+}
+.error {
+  color: #e63946;
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1.1rem;
+}
+.total {
+  font-weight: 700;
+  color: #e63946;
+}
+.submitButton {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+.submitButton:disabled,
+.submitButton[aria-disabled="true"] {
+  background: #bfc8d2;
+  cursor: not-allowed;
+}
+.success {
+  color: #1d3557;
+  background: #d4edda;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+}
