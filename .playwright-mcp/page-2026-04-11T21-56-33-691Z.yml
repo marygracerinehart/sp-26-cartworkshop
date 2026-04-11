@@ -1,0 +1,34 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "🌰 Buckeye Marketplace" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: 🌰
+        - heading "Buckeye Marketplace" [level=1] [ref=e8]
+      - link "Go to cart" [ref=e9] [cursor=pointer]:
+        - /url: /cart
+        - button "Shopping cart with 0 items" [ref=e10]: 🛒
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - complementary [ref=e13]:
+        - heading "Filters" [level=2] [ref=e14]
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - text: Category
+            - combobox "Category" [ref=e17]:
+              - option "All Categories" [selected]
+              - option "Electronics"
+              - option "Books"
+              - option "Clothing"
+          - generic [ref=e18]:
+            - text: Min Price
+            - spinbutton "Min Price" [ref=e19]
+          - generic [ref=e20]:
+            - text: Max Price
+            - spinbutton "Max Price" [ref=e21]
+          - generic [ref=e22]:
+            - button "Apply Filters" [ref=e23] [cursor=pointer]
+            - button "Clear" [ref=e24] [cursor=pointer]
+      - generic [ref=e25]:
+        - heading "Products" [level=2] [ref=e26]
+        - paragraph [ref=e27]: Loading products…

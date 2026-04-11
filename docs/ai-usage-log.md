@@ -18,3 +18,48 @@
 - **Wednesday concepts verified:** [Controlled components, onBlur validation, touched
 tracking, submission handling]
 - **Issues found:** [FILL IN]
+
+## Session: Playwright MCP Workflow Attempt (April 11, 2026)
+- **Goal:** Execute end-to-end flow (login/register → browse products → add to cart → checkout → order confirmation → order history).
+- **Result:** Stopped at Step 1 due to failed login/register route rendering.
+
+### Exact Failure Location
+- **Step:** 1 (Register or log in with a valid user)
+- **URL:** `http://localhost:5174/login`
+- **Observed behavior:** Blank page rendered; no login/registration form controls were available for role/label-based interaction.
+
+### Evidence Captured
+- **Snapshot:** `.playwright-mcp/page-2026-04-11T22-07-47-519Z.yml`
+- **Screenshot:** `step1-login-attempt.png` (blank page)
+- **Console log:** `.playwright-mcp/console-2026-04-11T22-07-47-040Z.log` (lines 1–3)
+
+### Terminal Context During Attempt
+- Backend run without `JWT_KEY` failed with: `JWT_KEY must be set via environment variable or user secrets.`
+- Backend run with explicit project then failed to bind: `Failed to bind to address http://127.0.0.1:5228: address already in use.`
+- Frontend dev server started on alternate port because 5173 was occupied: `http://localhost:5174/`.
+
+### Execution Decision
+- Per instructions, run was halted immediately after major-step validation failure at Step 1.
+- Steps 2–6 were not executed.
+
+## Session: Testing Evidence Update (April 11, 2026)
+
+### 1) Prompt used with testing agent
+- "Generate a Playwright spec file from the steps you just executed. Use getByRole, getByLabel, or getByTestId where possible. Then run npx playwright test and show me the result."
+
+### 2) One thing Copilot got wrong + how it was caught
+- **Issue:** E2E spec was created under `frontend/tests/e2e/order-flow.spec.ts`, which matched Vitest's default include and got executed by `npm test -- --run`.
+- **How caught:** Frontend test run failed with: "Playwright Test did not expect test() to be called here" pointing to `tests/e2e/order-flow.spec.ts`.
+
+### 3) Test commands run + pass/fail
+- `dotnet test backend.Tests/backend.Tests.csproj` → **PASS** (5 passed, 0 failed)
+- `npm test -- --run` (from `frontend/`) → **FAIL** (3 tests passed, 1 failed suite due to Playwright spec being picked up by Vitest)
+- `npx playwright test` (from `frontend/`) → **FAIL** (Step 1 login/register UI missing on `/login`)
+
+### 4) Evidence notes
+- Backend run notes, frontend run notes, and E2E run artifacts are documented in `docs/testing-evidence.md`.
+
+### 5) Wednesday quality self-check
+- **Functionality:** Partial — product browsing/cart pages work, but login/register and order-history flow is not available end-to-end.
+- **Security:** Mixed — backend startup requires `JWT_KEY` (good), but auth UI route is currently non-functional so auth flow is not validated.
+- **Code quality:** Needs follow-up — test layout should separate E2E and unit test discovery to avoid runner conflicts.

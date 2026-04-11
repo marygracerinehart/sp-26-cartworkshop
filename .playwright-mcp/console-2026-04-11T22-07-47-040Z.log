@@ -1,0 +1,4 @@
+[     366ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5174/node_modules/.vite/deps/react-dom_client.js?v=f6246236:14339
+[     383ms] [WARNING] No routes matched location "/login"  @ http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=f6246236:163
+[     384ms] [WARNING] No routes matched location "/login"  @ http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=f6246236:163
+[  196772ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5174/@vite/client:870
